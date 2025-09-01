@@ -105,7 +105,7 @@ The
 Three places to configure keybindings, depending on how any one plugin is configure:
 
 1. `.config/nvim/lua/config/keymaps.lua`. keybindings that are not specific to plugins.
-2. `keys` filed of Lua table(in Lua, a "table" is like a combination of an array and a dict)passed to a plugin. `keys` would not be send to plugins. It is a filed of `Lazy.nvim` to manage keybindings. `Lazy.vim` would analyse the `keys` table and set the keybindings when starting Neovim.
+2. `keys` filed of Lua table(in Lua, a "table" is like a combination of an array and a dict)passed to a plugin. `keys` would not be send to plugins. It is a filed of `Lazy.nvim` to manage keybindings. `Lazy.vim` would analyse the `keys` table and set the keybindings when starting Neovim. `keymaps.lua` would be treated as default keybindings, every `keys` table in `plugins` would be treated as local keybindings related to the plugin. `keys` has a higher priority than `keymaps.lua`.
 3. `opts` argument passed into a plugin's configuration. `Lazy.nvim` would execute `require("plugin").setup(ops)` when importing plugins.
 
 An example showing how to modify the keybindings to open different dictionaries.
