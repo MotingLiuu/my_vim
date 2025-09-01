@@ -145,3 +145,74 @@ Each item in the `keys` table is anther Lua table with three fields. The first t
 
 `<leader>` is an key used as the prefix for custom keybindings. In LazyVim, the leader is `<space>`. Special keys are
 indicated to Vim's keybindings engine using angle brackets, such as, `<Space>`, `<Right>`.
+
+# Basics Editing
+
+Most motion commands(`s`, `f`) can be prefixed with a count `<count><motion>`. The default count is `1`.
+
+Motion commands can also be combined with a ***verb*** to do something to the text between the cursor and the destination. `<verb><count><motion>`.
+
+**`<count>i`**
+
+`5ifoo<Escape>` would insert `foofoofoofoofoo` .
+
+## Deleting text
+
+The verb for deleting text is `d`.
+
+`d<motion>` will delete all text between the cursor and location where the `<motion>` take to.
+
+**Examples**:
+
+1. `dh` to delete the character to the left of the cursor.
+2. `d3w` to delete three words.
+3. `dw` to delete one word, three separate times.
+4. `d^` to delete from the cursor to the beginning of the line.
+5. `d2fe` to delete all text between the cursor location and the second e after the cursor, including that second e.
+6. `d2Ta` to delete all text between the cursor and the second a behind the cursor, not including that second a.
+7. `dsfoos` to delete text between the current cursor position and the label s that pops up when you use Seek mode to seek to foo. Note that Seek mode always jumps to the beginning of the word you searched for. This means that if the foo you jump to is after the current cursor location, the oo will not be deleted, but the f will. But if the foo you jump to is before the current cursor location, all three letters of foo will be deleted.
+
+## Changing text
+
+Replace `d` with `c`.
+
+## Operating to End of the Current line
+
+`d$` and `c$` to delete or change the end of the line, or just use `D` and `C` instead.
+
+`d^` or `d0` means delete to the beginning of the line.
+
+`dd` deleted an entire line and `cc` deletes it and entire Insert mode. `d3d` will delete three lines, and `3dd` will deleted one line three times.
+
+## Shortcuts for Modifying Individual Characters
+
+Use `dl` to delete the character under the cursor or `4dl` to delete that character and three chars after it, or just use `x`.
+
+The `x` command can be used with a count, just use `5x` to delete 5 chars starting with the one under the cursor.
+
+`X` would go other direction and delete chars before the cursor, or just use `hx` or `d4h`.
+
+`r` would replace a char with a different char.
+
+`J`(join) would merge the current line with next line to a newline and insert a whitespace between them. `gJ` just do a join without modifying whitespace.
+
+## Manipulating Case
+
+`gU`(Go To and Convert to Uppercase)
+
+`gu`(Go To and Convert to Lowercase)
+
+`~` inverts the case of the char under the cursor.
+
+`gUU` and `guu` do the same thing as other duplicate verbs, applying the upper/lower case operation to the entire line.
+
+## Repeating Commands
+
+`.` would repeat the last verb.
+
+As opposed to using `d<motion>i` when use `c`, the delete motion and the text inserted is remembered, the entire change
+can be repeated with a `.` command.
+
+`clindex<Escape>` means to change one char to index. Then use navigation commands to the next use of `i`, just type `.` to repeat the change and continue to the next instance.
+
+`<count>.` would change the count before the command being repeated. If `3dd` was used to delete three lines, `2.` would delete next two lines.
