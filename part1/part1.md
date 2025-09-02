@@ -216,3 +216,15 @@ can be repeated with a `.` command.
 `clindex<Escape>` means to change one char to index. Then use navigation commands to the next use of `i`, just type `.` to repeat the change and continue to the next instance.
 
 `<count>.` would change the count before the command being repeated. If `3dd` was used to delete three lines, `2.` would delete next two lines.
+
+**Recording Commands**
+
+Press `qq` to start a recording(don't use the seek mode). After that type whatever sequence of commands, even `:` commands. When finish recording, just press `q`.
+
+**Appending to a Recording**
+
+Using `q` to stop recording. Use `qQ` to record in record in append mode.
+
+Use `Q` to play back most recently saved recording.
+
+**Use `u` to undo and `Control-r` to redo the changes.
