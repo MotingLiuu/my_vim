@@ -228,3 +228,29 @@ Using `q` to stop recording. Use `qQ` to record in record in append mode.
 Use `Q` to play back most recently saved recording.
 
 **Use `u` to undo and `Control-r` to redo the changes.
+
+# Objects and Operator-Pending Mode
+
+Use `(` to navigate to the start of the current sentence, and `)` to move one sentence forward. `.`, `!`, `?` chars mean "sentence" in normal mode.
+
+Use `{` and `}` to move up or down by one "paragraph".
+
+Press `[` or `]` would get a menu with options to move to the previous or next something depends the key typed.
+
+Use `f[` or `F[` to jump to the next or previous square brace. Use `[(` or `])` to jump out of the current brace if in the middle of `()`. `[%` or `]%` will jump to the beginning or end of whichever parenthesis, as `%` is a placeholder for "whatever is bracketing me." **`[[` or `]]` would not jump out of square brackets**. They would move the cursor to other reference of the variable under the cursor.
+
+## Jump by Language Features
+
+`[c`, `]c`, `[f`, `]f`, `[m`, `]m` keybindings allow you to navigate around a source code file by jumping to the previous or next class/type definition, function definition, or method definition(start of call/function/method. `[C`, `]C`, `[F`, `]F`, `[M`, `]M` would
+
+## Jump to End of Indention
+
+`[i` or `]i`
+
+## Jump to diagnostics
+
+`[d` or `]d` jump to the next squiggly line, `[e` or `]e` jumps to the next error or warnings or warnings. `[w` and `]w` navigate between warnings. `[s` and `]s` navigate between misspelled words. `[t` and `]t` navigate between `TODO` and `FIXME` comments.
+
+## Jump to Git Revisions
+
+`[h` and `]h` navigate between git "hunk" referring to a section of a file that contains modifications that haven't been staged or committed yet.
